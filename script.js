@@ -14,10 +14,11 @@ const createCustomElement = (element, className, innerText) => {
   e.innerText = innerText;
   return e;
 };
-const createCartItemElement = ({ sku, name, salePrice, image }) => {
+const createCartItemElement = ({ name, salePrice, image }) => {
   const li = document.createElement('li');
   li.className = 'cart__item';
-  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  li.innerText = `${name}
+  R$ ${salePrice}`;
   li.appendChild(createProductImageElement(image));
   return li;
 };
@@ -30,7 +31,7 @@ const getPrice = () => {
     const string = element.innerText.split('$')[1];
     count += (+string);
   });
-  elementPrice.innerHTML = Math.floor(count * 100) / 100;
+  elementPrice.innerHTML = count.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 };
 // Função para adicionar o Item para carrinho
 const addItem = async (idItem) => {
@@ -53,12 +54,13 @@ const getIdFromButton = (event) => {
   const idItem = getSkuFromProductItem(event.parentNode);
   addItem(idItem);
 };
-const createProductItemElement = ({ sku, name, image }) => {
+const createProductItemElement = ({ sku, name, salePrice, image }) => {
   const section = document.createElement('section');
   section.className = 'item';
   section.appendChild(createCustomElement('span', 'item__sku', sku));
-  section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createProductImageElement(image));
+  section.appendChild(createCustomElement('span', 'item__title', name));
+  section.appendChild(createCustomElement('span', 'item__price', salePrice));
   const buttonCreate = createCustomElement('button', 'item__add', 'Adicionar ao carrinho!');
   buttonCreate.addEventListener('click', (event) => {
     getIdFromButton(event.target);
@@ -72,10 +74,11 @@ const elementsProduct = async () => {
   const product = await fetchProducts('computador');
   divLoading.remove();
   const dadItens = document.querySelector('.items');
-  product.results.forEach(({ id, title, thumbnail }) => {
+  product.results.forEach(({ id, title, price, thumbnail }) => {
     const idProduct = createProductItemElement({
       sku: id,
       name: title,
+      salePrice: price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
       image: thumbnail,
     });
     dadItens.appendChild(idProduct);

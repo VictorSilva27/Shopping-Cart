@@ -150,6 +150,7 @@ body {
   margin: 0 auto;
   border-radius: 5px;
   background-color: rgb(249, 249, 246);
+  cursor: pointer;
 }
 
 .empty-cart:hover {
@@ -206,6 +207,7 @@ body {
   background-size: 15px;
   background-repeat: no-repeat;
   padding: 10px;
+  cursor: pointer;
 }
 
 .title__cart {

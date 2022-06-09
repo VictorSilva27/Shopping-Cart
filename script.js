@@ -17,8 +17,8 @@ const createCustomElement = (element, className, innerText) => {
 const createCartItemElement = ({ name, salePrice, image }) => {
   const li = document.createElement('li');
   li.className = 'cart__item';
-  li.innerText = `${name}
-  R$ ${salePrice}`;
+  li.innerHTML = `<div class='title__cart'>${name}</div>
+  <div class='price__cart'>R$ ${salePrice.toFixed(2)}</div>`;
   li.appendChild(createProductImageElement(image));
   return li;
 };

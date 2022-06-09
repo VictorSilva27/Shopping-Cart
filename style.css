@@ -148,16 +148,20 @@ body {
   width: 170px;
   height: 35px;
   margin: 0 auto;
-  border: 2px solid rgb(5, 52, 219);
+  border-radius: 5px;
   background-color: rgb(249, 249, 246);
+}
+
+.empty-cart:hover {
+  color: aliceblue;
+  background-color: rgb(5, 52, 219);
 }
 
 .cart__item {
   margin: 10px;
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   width: auto;
   padding: 5px;
   background-color: rgb(246, 246, 246);
@@ -166,15 +170,23 @@ body {
 .cart__item img {
   margin: 10px;
   border-radius: 100%;
-  width: 100px;
+  width: 80px;
 }
 
-.cart__item .cart__title {
+
+.price__cart {
+  font-size: larger;
+  font-weight: 600;
+  color: rgb(49, 49, 49);
+  width: auto;
   display: flex;
-  border: 2px solid red;
-  line-height: 20px;
-  width: 100px;
-  margin-bottom: 15px;
+  justify-content: end;
+  align-items: center;
+}
+
+.cifrao__strong {
+  font-size: 10px;
+  margin-right: 2px;
 }
 
 .loading {
@@ -187,4 +199,26 @@ body {
   justify-content: flex-end;
   padding: 5px;
   color: rgb(10, 118, 79);
+}
+
+.remove__ol {
+  background-image: url('excluir.png');
+  background-size: 15px;
+  background-repeat: no-repeat;
+  padding: 10px;
+}
+
+.title__cart {
+  display: flex;
+  align-items: center;
+  margin: 2px;
+  font-size: 12px;
+  line-height: 20px;
+  width: auto;
+  height: 100px;
+}
+
+.text-price {
+  text-align: center;
+  margin-bottom: 5px;
 }

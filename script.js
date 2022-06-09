@@ -17,8 +17,14 @@ const createCustomElement = (element, className, innerText) => {
 const createCartItemElement = ({ name, salePrice, image }) => {
   const li = document.createElement('li');
   li.className = 'cart__item';
-  li.innerHTML = `<div class='title__cart'>${name}</div>
-  <div class='price__cart'>R$ ${salePrice.toFixed(2)}</div>`;
+  li.innerHTML = `
+  <div class='remove__ol'></div>
+  <div class='container__cart'>
+  <div class='title__cart'>${name}</div>
+  <div class='price__cart'>
+  <strong class='cifrao__strong'>R$</strong>${salePrice.toFixed(2).replace('.', ',')}
+  </div>
+  </div>`;
   li.appendChild(createProductImageElement(image));
   return li;
 };
@@ -28,7 +34,7 @@ const getPrice = () => {
   const elementPrice = document.querySelector('.total-price');
   let count = 0;
   elementLi.forEach((element) => {
-    const string = element.innerText.split('$')[1];
+    const string = element.innerText.split('$')[1].replace(',', '.');
     count += (+string);
   });
   elementPrice.innerHTML = count.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -37,6 +43,7 @@ const getPrice = () => {
 const addItem = async (idItem) => {
   const item = await fetchItem(idItem);
   // Pegar o elemento pai dos cart__item
+  divLoading.remove();
   const dadItens = document.querySelector('.cart__items');
   const { id, title, price, thumbnail } = item;
   await dadItens.appendChild(createCartItemElement({
@@ -86,18 +93,19 @@ const elementsProduct = async () => {
 };
 // Chamar a função para que os produtos apareça no index.html
 elementsProduct();
-const cartItemClickListener = (event) => {
-  // Essa função só funciona, caso a class do cart__item for clicado 
-  if (event.target.classList.contains('cart__item')) {
-    event.target.remove();
+
+itemList.addEventListener('click', cartItemClickListener = (event) => {
+  if (event.target.classList.contains('remove__ol')) {
+    const eventClick = event.target.parentNode;
+    eventClick.remove();
     getPrice();
     saveCartItems(itemList.innerHTML);
   }
-};
-itemList.addEventListener('click', cartItemClickListener);
+});
 
 buttonClear.addEventListener('click', () => {
   itemList.innerHTML = '';
+  saveCartItems(itemList.innerHTML);
   getPrice();
 });
 

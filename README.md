@@ -1,2 +1,3 @@
 # Projeto-Shopping-Cart
-Projeto da Trybe
+
+Esse projeto foi muito booom, me diverti e aprendi bastante com ele

@@ -1,8 +1,8 @@
 # Shopping Cart 🛒
 
-Esse projeto foi muito booom, me diverti e aprendi bastante com ele
+Esse projeto foi muito booom, me diverti e aprendi bastante com ele, nele utilizei JavaScript, HTML e CSS.
 
-🔰Como iniciar o projeto na sua máquina🔰
+Como iniciar o projeto na sua máquina 💻
 
 - ``` git clone git@github.com:VictorSilva27/Shopping-Cart.git ``` (Clonar o repositório no local)
 - ``` cd Shopping-Cart ``` (Entrar no repositório clonado)

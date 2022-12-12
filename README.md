@@ -8,5 +8,5 @@ Como iniciar o projeto na sua máquina 💻
 - ``` cd Shopping-Cart ``` (Entrar no repositório clonado)
 - Inicie pelo Live Server [(Extensão do VS Code)](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
 
-### Nota do Projeto
+## Nota do Projeto ⭐⭐⭐⭐⭐
 ![Nota Projeto Shopping Cart](Project-Shopping-Cart.png)
